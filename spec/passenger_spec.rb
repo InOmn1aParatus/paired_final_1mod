@@ -16,4 +16,13 @@ RSpec.describe Passenger do
       expect(charlie.age).to eq(18)
     end
   end
+
+  context 'methods' do
+    it 'returns true if adult and false if minor' do
+      charlie = Passenger.new({"name" => "Charlie", "age" => 18})
+      taylor = Passenger.new({"name" => "Taylor", "age" => 12})
+      expect(charlie.adult?).to eq(true)
+      expect(taylor.adult?).to eq(false)
+    end
+  end
 end
