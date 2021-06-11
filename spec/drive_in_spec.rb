@@ -31,5 +31,21 @@ RSpec.describe DriveIn do
 
       expect(drive_in.parked).to eq([vehicle1, vehicle2])
     end
+
+    it 'lists vehicles with multiple passengers' do
+      vehicle1 = Vehicle.new('2001', 'Honda', 'Civic')
+      vehicle2 = Vehicle.new('2015', 'Hyundai', 'Sonata')
+      charlie = Passenger.new({ 'name' => 'Charlie', 'age' => 18 })
+      taylor = Passenger.new({ 'name' => 'Taylor', 'age' => 12 })
+      timmy = Passenger.new({ 'name' => 'Timmy', 'age' => 14 })
+      vehicle1.add_passenger(charlie)
+      vehicle1.add_passenger(taylor)
+      vehicle2.add_passenger(timmy)
+      drive_in = DriveIn.new('Eldritch Drive-in')
+      drive_in.add_vehicle(vehicle1)
+      drive_in.add_vehicle(vehicle2)
+
+      expect(drive_in.list_carpools).to eq([vehicle1])
+    end
   end
 end
