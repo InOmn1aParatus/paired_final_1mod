@@ -14,5 +14,10 @@ RSpec.describe DriveIn do
       drive_in = DriveIn.new('Eldritch Drive-in')
       expect(drive_in.name).to eq('Eldritch Drive-in')
     end
+
+    it 'starts with no vehicles' do
+      drive_in = DriveIn.new('Eldritch Drive-in')
+      expect(drive_in.parked).to eq([])
+    end
   end
 end
