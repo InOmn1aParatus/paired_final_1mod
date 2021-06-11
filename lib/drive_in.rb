@@ -15,4 +15,15 @@ class DriveIn
       vehicle.passengers.count > 1
     end
   end
+
+  def list_minors
+    @parked.map do |vehicle|
+      minors = vehicle.passengers.find_all do |passenger|
+        !passenger.adult?
+      end
+      minors.map do |minor|
+        minor.name
+      end
+    end.flatten
+  end
 end
