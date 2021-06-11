@@ -37,7 +37,7 @@ RSpec.describe DriveIn do
       vehicle2 = Vehicle.new('2015', 'Hyundai', 'Sonata')
       charlie = Passenger.new({ 'name' => 'Charlie', 'age' => 18 })
       taylor = Passenger.new({ 'name' => 'Taylor', 'age' => 12 })
-      timmy = Passenger.new({ 'name' => 'Timmy', 'age' => 14 })
+      timmy = Passenger.new({ 'name' => 'Timmy', 'age' => 16 })
       vehicle1.add_passenger(charlie)
       vehicle1.add_passenger(taylor)
       vehicle2.add_passenger(timmy)
@@ -46,6 +46,22 @@ RSpec.describe DriveIn do
       drive_in.add_vehicle(vehicle2)
 
       expect(drive_in.list_carpools).to eq([vehicle1])
+    end
+
+    it 'lists passengers under 18' do
+      vehicle1 = Vehicle.new('2001', 'Honda', 'Civic')
+      vehicle2 = Vehicle.new('2015', 'Hyundai', 'Sonata')
+      charlie = Passenger.new({ 'name' => 'Charlie', 'age' => 18 })
+      taylor = Passenger.new({ 'name' => 'Taylor', 'age' => 12 })
+      timmy = Passenger.new({ 'name' => 'Timmy', 'age' => 16 })
+      vehicle1.add_passenger(charlie)
+      vehicle1.add_passenger(taylor)
+      vehicle2.add_passenger(timmy)
+      drive_in = DriveIn.new('Eldritch Drive-in')
+      drive_in.add_vehicle(vehicle1)
+      drive_in.add_vehicle(vehicle2)
+
+      expect(drive_in.list_minors).to eq(["Charlie", "Timmy"])
     end
   end
 end
