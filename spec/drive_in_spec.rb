@@ -61,7 +61,7 @@ RSpec.describe DriveIn do
       drive_in.add_vehicle(vehicle1)
       drive_in.add_vehicle(vehicle2)
 
-      expect(drive_in.list_minors).to eq(["Charlie", "Timmy"])
+      expect(drive_in.list_minors).to eq(["Taylor", "Timmy"])
     end
   end
 end
