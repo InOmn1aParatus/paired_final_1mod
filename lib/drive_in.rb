@@ -5,4 +5,8 @@ class DriveIn
     @name = name
     @parked = []
   end
+
+  def add_vehicle(vehicle)
+    @parked << vehicle
+  end
 end
