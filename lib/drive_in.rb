@@ -17,13 +17,20 @@ class DriveIn
   end
 
   def list_minors
-    @parked.map do |vehicle|
-      minors = vehicle.passengers.find_all do |passenger|
-        !passenger.adult?
+  #   @parked.map do |vehicle|
+  #     minors = vehicle.passengers.find_all do |passenger|
+  #       !passenger.adult?
+  #     end
+  #     minors.map do |minor|
+  #       minor.name
+  #     end
+  #   end.flatten
+    minors = []
+    @parked.each do |vehicle|
+      vehicle.passengers.each do |passenger|
+        minors << passenger.name if !passenger.adult?
       end
-      minors.map do |minor|
-        minor.name
-      end
-    end.flatten
+    end
+    minors
   end
 end
