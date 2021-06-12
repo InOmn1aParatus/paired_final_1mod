@@ -25,12 +25,12 @@ class DriveIn
   #       minor.name
   #     end
   #   end.flatten
-    minors = []
-    @parked.each do |vehicle|
+    # minors = []
+    @parked.each_with_object([]) do |vehicle, minors|
       vehicle.passengers.each do |passenger|
         minors << passenger.name if !passenger.adult?
       end
     end
-    minors
+    # minors
   end
 end
